@@ -47,6 +47,8 @@ function findLongestWordLength(str) {
     return maxarray;
   }
 
+
+  // confirm ending. 
   function confirmEnding(str, target) {
     if(target.length > str.length) return false;
     let start = (str.length - target.length);
@@ -55,10 +57,11 @@ function findLongestWordLength(str) {
     return (str.substring(start,start.length) === target);
   }
 
-  function repeatStringNumTimes(str, num) {
-    return str;
-  }
 
+  // 
+  
+
+  // repeat string n number of times. 
   function repeatStringNumTimes(str, num) {
     console.log("Num " , num);
     if(num <=1) return str;
@@ -68,6 +71,50 @@ function findLongestWordLength(str) {
     }
   }
 
+  // truncate the string to return ellipsis. 
+  function truncateString(str, num) {
+    let substringextract = str.substring(0,num);
+    if(num < str.length) {
+      return substringextract + '...';
+    }
+    return substringextract;
+  }
+
+  truncateString("A-tisket a-tasket A green and yellow basket", 8)
+
+
+  //Applying a function so that it returns the first element. 
+  function findElement(arr, func) {
+    let num = 0;
+    for(num = 0; num < arr.length; num++) {
+      if(func(arr[num])) return num;
+    }
+    return 'undefined';
+  }
+
+ /* function titleCase(str) {
+    var newTitle = str.split(" ");
+    var updatedTitle = [];
+    for (var st in newTitle) {
+      updatedTitle[st] = newTitle[st]
+        .toLowerCase().replaceAt(0, newTitle[st].charAt(0).toUpperCase());
+    }
+    return updatedTitle.join(" ");
+  }*/
+  
+
+  function frankenSplice(arr1, arr2, n) {
+    if(n > arr2.length) {
+       n = arr2.length -1;
+    }
+    let firstarray= arr1.slice();
+    /*for(let k =0 ; k < firstarray.length; k++ ) {
+      arr2.splice(n,0,firstarray[k]);
+      n++;
+    }*/
+    arr2.splice(n , 0 , ...arr1);
+    return arr2;
+  }
   
 console.log(reverseString("Ma"));
 console.log(findLongestWordLength("Google do a barrel roll"));
@@ -77,3 +124,9 @@ console.log(confirmEnding("Bastian", "n"));
 console.log(confirmEnding("Congratulation", "on"));
 console.log(confirmEnding("Open sesame", "same"));
 console.log(repeatStringNumTimes("World",5));
+console.log(truncateString("A-tisket a-tasket A green and yellow basket", 8));
+console.log(truncateString("A-", 1));
+console.log(truncateString("A-tisket a-tasket A green and yellow basket", "A-tisket a-tasket A green and yellow basket".length + 2));
+console.log(findElement([1, 5, 6, 7], num => num % 2 === 0));
+//console.log(titleCase("I'm a little tea pot"));
+console.log(frankenSplice([1, 2, 3], [4, 5], 1));

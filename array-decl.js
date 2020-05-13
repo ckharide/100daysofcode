@@ -24,11 +24,11 @@ function mixedNumbers(arr) {
   greetings = ["Hello" , "World" , "NewYork" , "Chile"]
   let temp = greetings.splice(1,1);
   console.log("logging after splice " + greetings);
-  console.log(temp)
+  console.log("Temp first" + temp)
 
   temp = greetings.splice(1,3);
   console.log(greetings);
-  console.log(temp);
+  console.log("Temp " + temp);
 
   // first param => Index
   // second param => number of elementts to remove 
