@@ -115,6 +115,73 @@ function findLongestWordLength(str) {
     arr2.splice(n , 0 , ...arr1);
     return arr2;
   }
+
+  //ignore false values. 
+  function bouncer(arr) {
+    let myarray = [];
+    for (let x =0; x < arr.length; x++) {
+      if(arr[x]) 
+          myarray.push(arr[x]);
+    }
+    return myarray;
+      
+  }
+
+  function chunkArrayInGroups(arr, size) {
+    /*
+    let temp = []
+    temp.push(arr[0]);
+    let myarray = [];
+    for(let k = 1 ; k < arr.length; k++) {
+      if((k % size) != 0) {
+        temp.push(arr[k]);
+      }
+      else 
+        {
+          myarray.push(temp);
+          temp = [];
+          temp.push(arr[k]);
+        } 
+    }
+    myarray.push(temp);
+    return myarray;*/
+    var myyarray = [];
+    for (i = 0 ; i < arr.length; i = i + size) {
+      myyarray.push(arr.slice(i,i+size));
+    }
+    return myyarray;
+    /*
+     var newArr = [];
+  while (arr.length) {
+    newArr.push(arr.splice(0, size));
+  }
+  return newArr;
+  */
+  }
+
+ 
+  
+  function temp(arrs) {
+    return arrs;
+    var test = arrs[1].toLowerCase();
+    var target = arrs[0].toLowerCase();
+    for (var i = 0; i < test.length; i++) {
+      if (target.indexOf(test[i]) < 0) return false;
+    }
+    return true;
+  }
+  
+
+  //Index of the smallest number 
+  function getIndexToIns(arr, num) {
+    let count = 0;
+    for (var i =0; i < arr.length;  i++) {
+      if( arr[i] < num) count++;
+    }
+    return count;
+  }
+
+  
   
 console.log(reverseString("Ma"));
 console.log(findLongestWordLength("Google do a barrel roll"));
@@ -130,3 +197,12 @@ console.log(truncateString("A-tisket a-tasket A green and yellow basket", "A-tis
 console.log(findElement([1, 5, 6, 7], num => num % 2 === 0));
 //console.log(titleCase("I'm a little tea pot"));
 console.log(frankenSplice([1, 2, 3], [4, 5], 1));
+console.log(bouncer([7, "ate", "", false, 9]));
+console.log(bouncer([false, null, 0, NaN, undefined, ""]));
+console.log(getIndexToIns([10, 20, 30, 40, 50], 35));
+console.log(getIndexToIns([], 1));
+console.log(getIndexToIns([2, 20, 10], 19));
+console.log("Hello world");
+console.log(temp["hello", "hey"]);
+console.log(chunkArrayInGroups(["a", "b", "c", "d"], 2));
+console.log(chunkArrayInGroups([0, 1, 2, 3, 4, 5], 4));
