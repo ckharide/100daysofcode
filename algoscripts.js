@@ -128,6 +128,8 @@ function findLongestWordLength(str) {
   }
 
   function chunkArrayInGroups(arr, size) {
+    //splits an array (first argument) into groups the length of size (second argument) and returns them as a two-dimensional array.splits an array (first argument) into groups the length of 
+    // size (second argument) and returns them as a two-dimensional array.
     /*
     let temp = []
     temp.push(arr[0]);
@@ -150,7 +152,8 @@ function findLongestWordLength(str) {
       myyarray.push(arr.slice(i,i+size));
     }
     return myyarray;
-    /*
+
+    /* Optimal 3
      var newArr = [];
   while (arr.length) {
     newArr.push(arr.splice(0, size));
