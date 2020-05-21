@@ -211,3 +211,66 @@ filteredList = sublist.filter(x => (x.rating > 8.0));
 // Only change code above this line
 
 console.log(filteredList);
+
+// non mutating concat , avoid push 
+function nonMutatingConcat(original, attach) {
+  var thirdarray = [...original];
+  for(let i =0 ; i < attach.length ; i++) {
+    thirdarray.push(attach[i]);
+  }
+  return thirdarray;
+
+  // concat doesn't mutate original array. 
+  //   return original.concat(attach);
+
+  
+}
+
+function getRating(watchList){
+  // Only change code below this line
+  var averageRating;
+  var temp = watchList.filter(x => (x["Director"] === "Christopher Nolan"));
+  const sumofRating = temp.reduce((sum, user) => sum + parseFloat(user.imdbRating), 0);
+  averageRating = sumofRating/temp.length;
+  console.log(sumofRating);
+  // Only change code above this line
+  return averageRating;
+
+  /*
+  watchList.filter(film => film.Director === "Christopher Nolan")
+    // Use map to convert their ratings from strings to numbers
+    .map(film => Number(film.imdbRating))
+    // Use reduce to add together their ratings
+    .reduce((sumOfRatings, rating) => sumOfRatings + rating) /
+  // Divide by the number of Nolan films to get the average rating
+  watchList.filter(film => film.Director === "Christopher Nolan").length;
+  // Add your code above this line
+  return averageRating;
+  */
+}
+
+function nonMutatingPush(original, newItem) {
+  // Only change code below this line
+  return original.concat(newItem);
+
+  // Only change code above this line
+}
+var first = [1, 2, 3];
+var second = [4, 6];
+console.log(nonMutatingPush(first, second));
+
+  //thirdarray.join(attach);
+
+var first = [1, 2, 3];
+var second = [4, 5];
+console.log(nonMutatingConcat(first, second));
+
+function nonMutatingSplice(cities) {
+  // Only change code below this line
+  let n = 3;
+  return cities.slice(0,n);
+
+  // Only change code above this line
+}
+var inputCities = ["Chicago", "Delhi", "Islamabad", "London", "Berlin"];
+nonMutatingSplice(inputCities);
