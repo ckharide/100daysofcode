@@ -274,3 +274,40 @@ function nonMutatingSplice(cities) {
 }
 var inputCities = ["Chicago", "Delhi", "Islamabad", "London", "Berlin"];
 nonMutatingSplice(inputCities);
+
+
+// Compute square of only positive integers. 
+const squareList = (arr) => {
+  return arr.filter(x => x > 0 && (typeof x == 'number' && (x % 1 === 0))).map(x => x * x);
+  // Only change code above this line
+/* reduce(func, initial valuee)
+  return arr.reduce((sqrIntegers, num) => {
+    return Number.isInteger(num) && num > 0
+      ? sqrIntegers.concat(num * num)
+      : sqrIntegers;
+  }, []); */
+};
+
+function alphabeticalOrder(arr) {
+  // Only change code below this line
+return arr.sort(function(a,b) {
+  return a === b ? 0 : a < b ? -1 : 1;
+});
+
+  // Only change code above this line
+}
+
+var globalArray = [5, 6, 3, 2, 9];
+function nonMutatingSort(arr) {
+  return arr.slice(0,arr.length).sort(function(a,b) {
+    return a === b ? 0 : a < b ? -1 : 1;
+  });
+}
+console.log("Original Mutated Array " + nonMutatingSort(globalArray));
+var globalArray = [5, 6, 3, 2, 9];
+console.log("Original Global " + globalArray);
+
+console.log(alphabeticalOrder(["a", "d", "c", "a", "z", "g"]));
+
+const squaredIntegers = squareList([-3, 4.8, 5, 3, -3.2]);
+console.log(squaredIntegers);
