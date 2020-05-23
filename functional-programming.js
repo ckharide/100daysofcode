@@ -68,6 +68,7 @@ function add (bookList , bookName) {
 }
 
 // Change code below this line
+// Mutation.
 function remove (bookList, bookName) {
   var mybooklist = [...bookList]
   var book_index = mybooklist.indexOf(bookName);
@@ -336,6 +337,29 @@ function urlSlug(title) {
   },[]);
   
 }
+
+// Every element
+function checkPositive(arr) {
+  // Only change code below this line
+return arr.every(function(currentValue){
+  return currentValue > 0;
+});
+
+}
+
+// some element. 
+function checkPositiveSome(arr) {
+  // Only change code below this line
+return arr.some(function(currentValue){
+  return currentValue > 0;
+});
+
+}
+
+
+
+console.log("Every Element " + checkPositive([1, -2, -3, 4, 5]));
+console.log("Some Element " + checkPositiveSome([-1, 2, 3, 4, 5]));
 
 
 //console.log(sentensify("May-the-force-be-with-you"));
