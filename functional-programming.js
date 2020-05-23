@@ -311,3 +311,37 @@ console.log(alphabeticalOrder(["a", "d", "c", "a", "z", "g"]));
 
 const squaredIntegers = squareList([-3, 4.8, 5, 3, -3.2]);
 console.log(squaredIntegers);
+
+function splitify(str) {
+  // Only change code below this line
+return str.split(/[^A-Za-z]/);
+
+  // Only change code above this line
+}
+
+function sentensify(str) {
+  return str.split(/\W/).join(" ");
+}
+
+var globalTitle = "Winter Is Coming";
+
+// Only change code below this line
+function urlSlug(title) {
+  let localsplit = title.toLowerCase().split(" ").filter(x => (x.length > 0));
+  return localsplit.reduce((str, join) => {
+    if(str.length ==0 )
+    return join;
+    else
+    return str + '-' + join;
+  },[]);
+  
+}
+
+
+//console.log(sentensify("May-the-force-be-with-you"));
+//console.log(sentensify("The.force.is.strong.with.this.one"));
+//console.log(splitify("This.is.a-sentence"));
+console.log(urlSlug(" Winter Is  Coming"));
+console.log(urlSlug(" Winter Is   Coming"));
+console.log(urlSlug("A Mind Needs Books Like A Sword Needs A Whetstone"));
+console.log(urlSlug("Hold The Door"));
