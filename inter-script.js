@@ -138,4 +138,33 @@ console.log("Destroyer " + destroyer([1, 2, 3, 1, 2, 3], 2, 3));
 const islower =  (/^[a-z]/).test("1llo");
 console.log(islower);
   
+function pairElement(str) {
+    let chars = str.split('');
+    let temp = chars.map(x => [x,pairATCG(x)]);
+    return temp;
+  }
   
+console.log(pairElement("GCG"));
+console.log(pairElement("ATCGA"));
+console.log(pairElement("TTGAG"));
+
+function pairATCG(x) {
+    let str = "";
+    switch(x) {
+        case "A" :  str = "T";
+        break;
+    
+        case "T" :  str = "A";
+        break;
+
+        case "C" : str = "G";
+        break;
+
+        case "G" : str = "C";
+        break;
+
+        default: break;
+    }
+    return str;
+}
+    
