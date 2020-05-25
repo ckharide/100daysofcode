@@ -1,0 +1,20 @@
+{
+  "name": "my_pkg_js",
+  "version": "1.0.0",
+  "description": "100 days of code",
+  "main": "inter-script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node inter-script.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ckharide/100daysofcode.git"
+  },
+  "author": "chandra mouli",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ckharide/100daysofcode/issues"
+  },
+  "homepage": "https://github.com/ckharide/100daysofcode#readme"
+}

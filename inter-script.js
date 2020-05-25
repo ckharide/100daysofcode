@@ -76,9 +76,66 @@ function filterout(arr1, arr2){
     return arr1.filter(item => (arr2.indexOf(item) !== -1))
 }
 
+function translatePigLatin(str) {
+    // Check for vowel detection . 
+    // Add way or ay. 
+    // ay adding recurisve. 
+    
+    let vowel = "way";
+    let c = "ay";
+    if(isVowel(str[0]))
+        return str + vowel;
+    if(!isVowel(str.slice(0,str.length)))
+        return str + c;
+    else 
+    {
+        while(!isVowel(str[0])){
+            str = str.slice(1,str.length) + str[0];
+            console.log(str);
+        }
+    }
+    return str + c;
+  }
+
+  function translatePigLatinNew(str) {
+    if (str.match(/^[aeiou]/)) return str + "way";
+  
+    const consonantCluster = str.match(/^[^aeiou]+/)[0];
+    console.log(consonantCluster);
+    return str.substring(consonantCluster.length) + consonantCluster + "ay";
+  }
+  
+  // test here
+  translatePigLatin("consonant");
+
+  function isVowel(str) {
+    let vowels = ['a','e','i','o','u'];
+    var args = Array.from(vowels);
+    for(let k =0 ; k < str.length; k++) {
+        if(args.indexOf(str[k]) !== -1) {
+            return true;
+        }
+    }
+    return false;
+  }
+  
+  console.log(translatePigLatinNew("rkda"));
+
+  //console.log(isVowel("wkz"));
+
+  function myReplace(str, before, after) {
+    const islower =  (/^[a-z]/).test(before[0]);
+    const replacepattern = (islower === true ? after[0].toLowerCase() : after[0].toUpperCase()) + after.substring(1);
+    return str.replace(before , replacepattern);
+  }
+  
+console.log(myReplace("A quick brown fox jumped over the jumped lazy dog", "jumped", "leaped"));
+console.log(myReplace("Let us get back to more Coding Coding", "Coding", "algorithms"));
+
 console.log(diffArray([1, 2, 3, 5], [1, 2, 3, 4, 5]));
 console.log("Destroyer " + destroyer([1, 2, 3, 1, 2, 3], 2, 3));
 
-
+const islower =  (/^[a-z]/).test("1llo");
+console.log(islower);
   
   
