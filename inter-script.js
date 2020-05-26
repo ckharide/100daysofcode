@@ -123,6 +123,7 @@ function translatePigLatin(str) {
 
   //console.log(isVowel("wkz"));
 
+  // replace with case. 
   function myReplace(str, before, after) {
     const islower =  (/^[a-z]/).test(before[0]);
     const replacepattern = (islower === true ? after[0].toLowerCase() : after[0].toUpperCase()) + after.substring(1);
@@ -167,4 +168,61 @@ function pairATCG(x) {
     }
     return str;
 }
+
+function fearNotLetter(str) {
+    for (var i = 0; i < str.length; i++) {
+      /* code of current character */
+      var code = str.charCodeAt(i);
+  
+      /* if code of current character is not equal to first character + no of iteration
+          hence character has been escaped */
+      if (code !== str.charCodeAt(0) + i) {
+        /* if current character has escaped one character find previous char and return */
+        return String.fromCharCode(code - 1);
+      }
+    }
+    return undefined;
+  }
+
+  function uniteUnique(arr) {
+   var first = arguments[0];
+   var remaining = Array.from(arguments).slice(1);
+   let massive = first;
+   remaining.filter(function(value){
+       /*for(let i =0 ; i < value.length; i++) {
+           if((massive.indexOf(value[i]) === -1)){
+                massive.push(value[i]);
+           }
+       }*/
+       let temp = value.filter(function(temp){
+            return (massive.indexOf(temp) === -1);
+       });
+       massive.push(...temp);
+   });
+   return massive;
+  }
+
+  function uniteUniqueNew(arr1, arr2, arr3) {
+    var newArr;
+    //Convert the arguments object into an array
+    var args = Array.prototype.slice.call(arguments);
+    //Use reduce function to flatten the array
+    newArr = args.reduce(function(arrA, arrB) {
+      //Apply filter to remove the duplicate elements in the array
+    console.log(arrB);
+      return arrA.concat(
+        arrB.filter(function(i) {
+          return arrA.indexOf(i) === -1;
+        })
+      );
+    });
+  
+    return newArr;
+  }
+  
+  
+  console.log(uniteUniqueNew([1, 3, 2], [5, 2, 1, 4], [2, 1])); // 1, 3, 2, 5 ,4
+  
+  
+fearNotLetter("abce");
     
