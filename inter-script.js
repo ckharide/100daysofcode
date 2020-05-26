@@ -223,6 +223,25 @@ function fearNotLetter(str) {
   
   console.log(uniteUniqueNew([1, 3, 2], [5, 2, 1, 4], [2, 1])); // 1, 3, 2, 5 ,4
   
+
+  function convertHTML(str) {
+    // Use Object Lookup to declare as many HTML entities as needed.
+    const htmlEntities = {
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&apos;"
+    };
+    //Use map function to return a filtered str with all entities changed automatically.
+    return str
+      .split("")
+      .map(entity => htmlEntities[entity] || entity)
+      .join("");
+  }
+  
+  // test here
+  console.log(convertHTML("Dolce & Gabbana"));
   
 fearNotLetter("abce");
     
