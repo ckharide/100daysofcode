@@ -18,6 +18,7 @@ function sumAll(arr) {
   },0);
 }
 
+
 function sumVariant(arr) {
     var sum = 0;
     for (var i = Math.min(...arr); i <= Math.max(...arr); i++) {
@@ -57,6 +58,11 @@ function diffArray(arr1, arr2) {
     ***/
 }
 
+
+/**
+ * 
+ * @param {Remove all elements from the initial array that are of the same value as these arguments.} arr 
+ */
 function destroyer(arr) {
     /*let remaining = [];
     for(let k =1 ; k < arguments.length ; k ++){
@@ -224,6 +230,13 @@ function fearNotLetter(str) {
   console.log(uniteUniqueNew([1, 3, 2], [5, 2, 1, 4], [2, 1])); // 1, 3, 2, 5 ,4
   
 
+  /**
+   * Convert HTML Entities . 
+   * @param {C} str 
+   * Convert the characters &, <, >, " (double quote), and ' (apostrophe), in a string to 
+   * their corresponding HTML entities.
+   */
+
   function convertHTML(str) {
     // Use Object Lookup to declare as many HTML entities as needed.
     const htmlEntities = {
@@ -241,7 +254,6 @@ function fearNotLetter(str) {
   }
   
   // test here
-  console.log(convertHTML("Dolce & Gabbana"));
+console.log(convertHTML("Dolce & Gabbana"));
   
-fearNotLetter("abce");
-    
+f
