@@ -256,4 +256,43 @@ function fearNotLetter(str) {
   // test here
 console.log(convertHTML("Dolce & Gabbana"));
   
-f
+function truthCheck(collection, pre) {
+  /*for(let k =0; k < collection.length; k++) {
+    if(!collection[k].hasOwnProperty(pre))
+    return false;
+    if(!collection[k][pre])
+    return false;
+  }
+  return true;*/
+
+  return collection.every(function check(element , index , array){
+       if((array[index][pre])){
+         return true;
+       }
+       else return false;
+  });
+
+ 
+}
+
+function truthCheckNew(collection, pre) {
+  return collection.every(function(element) {
+    return element.hasOwnProperty(pre) && Boolean(element[pre]);
+  });
+}
+
+
+
+console.log(truthCheck([{"user": "Tinky-Winky", "sex": "male"}, {"user": "Dipsy", "sex": "male"}, 
+{"user": "Laa-Laa", "sex": "female"}, {"user": "Po", "sex": "female"}], "sex"));
+
+console.log(truthCheck([{"user": "Tinky-Winky", "sex": "male", "age": 0}, {"user": "Dipsy", "sex": "male", "age": 3}, {"user": "Laa-Laa", "sex": "female", "age": 5}, 
+{"user": "Po", "sex": "female", "age": 4}], "age"));
+
+console.log(truthCheck([{"user": "Tinky-Winky", "sex": "male"}, {"user": "Dipsy"}, {"user": "Laa-Laa", "sex": "female"}, {"user": "Po", "sex": "female"}], "sex"));
+
+console.log(truthCheck([{"name": "Pete", "onBoat": true}, {"name": "Repeat", "onBoat": true, "alias": "Repete"}, {"name": "FastForward", "onBoat": true}], "onBoat"));
+
+console.log(truthCheck([{"single": "yes"}], "single"));
+
+console.log(truthCheck([{"single": "double"}, {"single": undefined}], "single"));
