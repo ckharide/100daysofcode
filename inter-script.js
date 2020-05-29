@@ -281,6 +281,49 @@ function truthCheckNew(collection, pre) {
   });
 }
 
+//drop eleement. 
+function dropElements(arr, func) {
+  return arr.filter( (item , index , arr) => {
+   // console.log("item " + item + "function eval" + func(item));
+    if(func(item) == false){
+      index = index + 1;
+    }
+    else 
+      return arr;
+  });
+}
+
+function steamrollArray(arr , flat = []) {
+  for(let k =0 ; k < arr.length; k++) {
+    if(Array.isArray(arr[k])) {
+      steamrollArrayflat(arr[k], flat);
+    }
+    else {
+       flat.push(arr[k]);
+    }
+  }
+  return flat;
+}
+
+function steamrollArrayNew(arr) {
+  let flat = [].concat(...arr);
+  return flat.some(Array.isArray) ? steamrollArray(flat) : flat;
+}
+
+
+
+function steamrollArray(arr) {
+  return steamrollArrayflat(arr,[]);
+}
+
+
+console.log("Flatten array " + steamrollArray([1, [2], [3, [[4]]]])); // 1,2,3,4 
+
+console.log(dropElements([1, 2, 3, 4], function(n) {return n >= 3;}));
+console.log(dropElements([0, 1, 0, 1], function(n) {return n === 1;}));
+
+
+
 
 
 console.log(truthCheck([{"user": "Tinky-Winky", "sex": "male"}, {"user": "Dipsy", "sex": "male"}, 
