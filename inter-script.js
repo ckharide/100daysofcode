@@ -296,7 +296,7 @@ function dropElements(arr, func) {
 function steamrollArray(arr , flat = []) {
   for(let k =0 ; k < arr.length; k++) {
     if(Array.isArray(arr[k])) {
-      steamrollArrayflat(arr[k], flat);
+      steamrollArray(arr[k], flat);
     }
     else {
        flat.push(arr[k]);
@@ -307,14 +307,9 @@ function steamrollArray(arr , flat = []) {
 
 function steamrollArrayNew(arr) {
   let flat = [].concat(...arr);
-  return flat.some(Array.isArray) ? steamrollArray(flat) : flat;
+  return flat.some(Array.isArray) ? steamrollArrayNew(flat) : flat;
 }
 
-
-
-function steamrollArray(arr) {
-  return steamrollArrayflat(arr,[]);
-}
 
 
 console.log("Flatten array " + steamrollArray([1, [2], [3, [[4]]]])); // 1,2,3,4 
