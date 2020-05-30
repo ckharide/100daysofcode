@@ -310,7 +310,33 @@ function steamrollArrayNew(arr) {
   return flat.some(Array.isArray) ? steamrollArrayNew(flat) : flat;
 }
 
+//Convert binary to string
+function binaryAgent(str) {
+  // break binary into a series of strngs. 
+  let temp = str.split(' ').map(x => stringconv(x)).join("");
+  return temp;
+}
 
+//convert String to codes. 
+function stringconv(arr) {
+  let stringarray= [].concat(String.fromCharCode(convertBtoInteger(arr)));
+  return stringarray;
+}
+
+// Convert value to Binary
+function convertBtoInteger(arr){
+  let value = 0;
+  let n = arr.length;
+  for(let k =0 ; k < arr.length; k++){
+    value = ((parseInt(arr[k]) && 1) << (n - (k + 1))) + value;
+  }
+  return value;
+}
+
+//console.log("Binary Array " + convertBtoInteger([0,1,1,1,0,0,1,0]));
+//console.log("Converted String Arrayy" + stringconv([65,72, 91, 66]));
+console.log(binaryAgent("01000001 01110010 01100101"));
+console.log(binaryAgent("01001001 00100000 01101100 01101111 01110110 01100101 00100000 01000110 01110010 01100101 01100101 01000011 01101111 01100100 01100101 01000011 01100001 01101101 01110000 00100001"));
 
 console.log("Flatten array " + steamrollArray([1, [2], [3, [[4]]]])); // 1,2,3,4 
 
