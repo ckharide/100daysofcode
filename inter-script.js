@@ -333,6 +333,96 @@ function convertBtoInteger(arr){
   return value;
 }
 
+var Person = function(firstAndLast) {
+  var fullName = firstAndLast;
+
+  this.getFirstName = function() {
+    return fullName.split(" ")[0];
+  };
+
+  this.getLastName = function() {
+    return fullName.split(" ")[1];
+  };
+
+  this.getFullName = function() {
+    return fullName;
+  };
+
+  this.setFirstName = function(name) {
+    fullName = name + " " + fullName.split(" ")[1];
+  };
+
+  this.setLastName = function(name) {
+    fullName = fullName.split(" ")[0] + " " + name;
+  };
+
+  this.setFullName = function(name) {
+    fullName = name;
+  };
+};
+
+
+function orbitalPeriod(arr) {
+  var GM = 398600.4418;
+  var earthRadius = 6367.4447;
+  var a = 2 * Math.PI;
+  var newArr = [];
+  var getOrbPeriod = function(obj) {
+    var c = Math.pow(earthRadius + obj.avgAlt, 3);
+    var orbPeriod = Math.round(a * Math.sqrt(c / GM));
+    delete obj.avgAlt;
+    obj.orbitalPeriod = orbPeriod;
+    return obj;
+  };
+
+  for (var elem in arr) {
+    newArr.push(getOrbPeriod(arr[elem]));
+  }
+
+  return newArr;
+}
+
+function smallestCommons(arr) {
+  let max = Math.max(arr[0], arr[1]);
+  let min = Math.min(arr[0],arr[1]);
+  let temp = [];
+  for(let k = Math.min(arr[0], arr[1]); k <= max; k++) {
+    temp.push(k);
+  }
+  return getlcm(temp);
+}
+
+function getlcm(arr){
+  let lcm = findlcm(arr[0], arr[1]);
+  for(let i = 2; i < arr.length; i++) {
+    lcm = findlcm(lcm, arr[i]);
+  }
+  return lcm;
+}
+
+function findlcm(a , b) {
+  let m = Math.max(a,b);
+  while(true) {
+    if(m % a === 0 && m % b === 0)
+    return m;
+    m++;
+  }
+  return m;
+}
+
+
+console.log("Smallest common value " + smallestCommons([2,10]));
+
+orbitalPeriod([{name : "sputnik", avgAlt : 35873.5553}]);
+
+var bob = new Person("Bob Ross");
+bob.getFullName();
+
+var bob = new Person('Bob Ross');
+console.log(bob.getFullName());
+bob.setFirstName('Chandra');
+console.log(bob.getFirstName());
+
 //console.log("Binary Array " + convertBtoInteger([0,1,1,1,0,0,1,0]));
 //console.log("Converted String Arrayy" + stringconv([65,72, 91, 66]));
 console.log(binaryAgent("01000001 01110010 01100101"));
@@ -360,3 +450,5 @@ console.log(truthCheck([{"name": "Pete", "onBoat": true}, {"name": "Repeat", "on
 console.log(truthCheck([{"single": "yes"}], "single"));
 
 console.log(truthCheck([{"single": "double"}, {"single": undefined}], "single"));
+
+
