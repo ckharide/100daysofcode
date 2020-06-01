@@ -2,10 +2,10 @@
   "name": "my_pkg_js",
   "version": "1.0.0",
   "description": "100 days of code",
-  "main": "inter-script.js",
+  "main": "inter-scripts.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node inter-script.js"
+    "start": "node algoprojects.js"
   },
   "repository": {
     "type": "git",
