@@ -63,3 +63,32 @@ var convertToRoman = function(num) {
 
   console.log(convertToRoman(447));
   
+  function rot13(str) {
+    // Break string into words 
+    // Consider only capital case. 
+    // drop everytthign else/
+
+    let words = str.split(' ');
+    return words.map(word => rotceaser(word)).join(' ');
+  }
+
+  function rotceaser(str) {
+      var start = "A".charCodeAt(0);
+      var end = "Z".charCodeAt(0);
+      let temp = [];
+      for(let k = 0; k < str.length; k++) {
+        const isUpper =  (/[A-Z]/).test(str[k]);
+        temp[k] = str[k];
+        if(isUpper === true) {
+            var code = (str.charCodeAt(k) + 13);
+            code =   (code > end ) ? start + (code % end) - 1 : code;
+            temp[k] = String.fromCharCode(code);
+        }
+      }
+      return temp.join('');
+  }
+  
+  console.log(rot13("QBT."))
+  console.log(rot13("SERR YBIR?"));
+  console.log(rot13("SERR PBQR PNZC"));
+  console.log(rot13("GUR DHVPX OEBJA SBK WHZCF BIRE GUR YNML QBT."));
