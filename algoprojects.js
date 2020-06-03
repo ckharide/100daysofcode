@@ -92,3 +92,82 @@ var convertToRoman = function(num) {
   console.log(rot13("SERR YBIR?"));
   console.log(rot13("SERR PBQR PNZC"));
   console.log(rot13("GUR DHVPX OEBJA SBK WHZCF BIRE GUR YNML QBT."));
+
+
+  function telephoneCheck(str) {
+    let pass = (/[^1-9]+[\s](-)/).test(str);
+    console.log("Regex " + pass);
+  }
+  
+  telephoneCheck("555-454-5555");
+
+  
+
+  function checkCashRegister(price, cash, cid) {
+    var objInsufficent = {status: "INSUFFICIENT_FUNDS", change: []};
+    var objsufficent = {status: "CLOSED", change: cid};
+
+    const denom = [
+        ["PENNY", 0.01],
+        ["NICKEL", 0.05],
+        ["DIME", 0.1],
+        ["QUARTER", 0.25],
+        ["ONE", 1],
+        ["FIVE", 5],
+        ["TEN", 10],
+        ["TWENTY", 20],
+        ["ONE HUNDRED", 100]
+      ];
+
+    let changevalue = Number((cash - price).toFixed(2));
+    let totalvalue = cid.reduce(function (accumulator , currentvalue) {
+        return accumulator + currentvalue[1];
+      },0);
+    if(totalvalue <= changevalue) {
+        return (totalvalue < changevalue) ? objInsufficent : objsufficent;
+    }
+
+    let objectarray = [];
+    let mycid = cid;
+    
+    for(let k = denom.length-1 ; k >=0 ; k--){
+        let orig = Number(denom[k][1].toFixed(2));
+        let compare = Number(mycid[k][1].toFixed(2));
+        if(changevalue > compare) 
+        {
+          changevalue = Number((changevalue - compare).toFixed(2));
+          mycid[k][1] = compare;
+        } 
+        else 
+        {
+            if(changevalue >= orig)
+            {
+              let balance = 0;
+              while(changevalue >= orig) {
+                changevalue = Number((changevalue - orig).toFixed(2));
+                balance += orig;
+                if(changevalue === 0.00) break;
+              }
+              mycid[k][1] = balance;
+            }
+        }
+        if(changevalue === 0.00) {
+            console.log("Denom value  ==> "   , mycid);
+        }
+        
+    }
+    return mycid;
+  }
+  
+  //console.log(checkCashRegister(19.5, 20, [["PENNY", 1.01], ["NICKEL", 2.05], ["DIME", 3.1], 
+  //["QUARTER", 4.25], ["ONE", 90], ["FIVE", 55], ["TEN", 20], ["TWENTY", 60], ["ONE HUNDRED", 100]]));
+
+  //console.log([["PENNY", 1.01], ["NICKEL", 2.05], ["DIME", 3.1], ["QUARTER", 4.25], ["ONE", 90], ["FIVE", 55], ["TEN", 20], 
+  //["TWENTY", 60], ["ONE HUNDRED", 100]]);
+
+  var temp = checkCashRegister(19.5,20,[["PENNY", 0.01], ["NICKEL", 0], ["DIME", 0], ["QUARTER", 0], ["ONE", 0], ["FIVE", 0], 
+  ["TEN", 0], ["TWENTY", 0], ["ONE HUNDRED", 0]]);
+  console.log(temp);
+
+  console.log(checkCashRegister(3.26, 100, [["PENNY", 1.01], ["NICKEL", 2.05], ["DIME", 3.1], ["QUARTER", 4.25], ["ONE", 90], ["FIVE", 55], 
+  ["TEN", 20], ["TWENTY", 60], ["ONE HUNDRED", 100]]));
