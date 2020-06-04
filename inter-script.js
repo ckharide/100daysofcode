@@ -437,8 +437,20 @@ console.log(dropElements([1, 2, 3, 4], function(n) {return n >= 3;}));
 console.log(dropElements([0, 1, 0, 1], function(n) {return n === 1;}));
 
 
+function range(min , max) {
+  let arr = [];
+  let init = Math.min(min, max);
+  let final = Math.max(min, max)
+  while(final >= init) {
+    arr.unshift(final);
+    final = final -1;
+  }
+  return arr;
+}
 
 
+
+console.log("Console Array " , range(2,-4));
 
 console.log(truthCheck([{"user": "Tinky-Winky", "sex": "male"}, {"user": "Dipsy", "sex": "male"}, 
 {"user": "Laa-Laa", "sex": "female"}, {"user": "Po", "sex": "female"}], "sex"));
