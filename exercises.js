@@ -71,6 +71,11 @@ function arrayToList(array) {
     this.y = this.y - vec.y;
 }
 
+
+/**
+ * Groups class
+ * 
+ */
 class Group {
     constructor() {
         this.members = [];
