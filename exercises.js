@@ -30,4 +30,58 @@ function arrayToList(array) {
     return list;
   }
 
-createListStruct([1,2,3,4],{});
+  function everyModified(arr , pred) {
+      // Use some 
+      let truth = true;
+      for(let k in arr){
+          truth = truth && arr.slice(k,k+1).some(pred);
+          if(truth === false) return truth;
+      }
+      return truth;
+  }
+
+  function every2(array, predicate) {
+    temp = !array.some(element => !predicate(element));
+    return temp;
+  }
+  
+
+  function isBiggerThan10(element, index, array) {
+    return element > 10;
+  }
+
+  class Vec {
+      constructor(x, y) {
+          this.x = x;
+          this.y = y;
+      }
+
+      get length(){
+          return Math.sqrt(Math.pow(this.x,2) + Math.pow(this.y,2));
+      }
+  }
+
+  Vec.prototype.add = function(vec) {
+      this.x = this.x + vec.x;
+      this.y = this.y + vec.y;
+  }
+
+  Vec.prototype.minus = function(vec) {
+    this.x = this.x - vec.x;
+    this.y = this.y - vec.y;
+}
+
+  console.log(arrayToList([1,2,3,4]));
+
+  console.log(every2([6, 5, 8, 2, 4],function(x) { return x > 1; }));
+
+  console.log(everyModified([6, 5, 8, 2, 4],function(x) { return x > 1; }));
+
+  var vec = new Vec(2,6);
+  var newvec = new Vec(4,2);
+
+  vec.add(newvec);
+  console.log(vec); 
+  console.log(vec.length);
+
+  
