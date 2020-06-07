@@ -71,6 +71,29 @@ function arrayToList(array) {
     this.y = this.y - vec.y;
 }
 
+class Group {
+    constructor() {
+        this.members = [];
+    }
+
+    add(elem) {
+        if(this.members.indexOf(elem) === -1)
+        this.members.push(elem);
+        return this;
+    }
+
+    delete(elem) {
+        if(this.members.indexOf(elem) !== -1){
+            this.members.splice(this.members.indexOf(elem),1);
+        }
+    }
+
+    
+}
+
+Group.prototype.print = function(){
+        console.log(this.members);
+}
   console.log(arrayToList([1,2,3,4]));
 
   console.log(every2([6, 5, 8, 2, 4],function(x) { return x > 1; }));
@@ -83,5 +106,10 @@ function arrayToList(array) {
   vec.add(newvec);
   console.log(vec); 
   console.log(vec.length);
+
+  var group = new Group();
+  group.add(20).add(10).delete(10);
+  group.print();
+  console.log(group);
 
   
