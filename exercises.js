@@ -117,4 +117,48 @@ Group.prototype.print = function(){
   group.print();
   console.log(group);
 
-  
+  /*function promptDirection(question) {
+    let result = prompt(question);
+    if (result.toLowerCase() == "left") return "L";
+    if (result.toLowerCase() == "right") return "R";
+    throw new Error("Invalid direction: " + result);
+  }
+
+  promptDirection("K");*/
+
+  const box = {
+    locked: true,
+    unlock() { this.locked = false; },
+    lock() { this.locked = true; },
+    _content: [],
+    get content() {
+    if (this.locked) throw new Error("Locked!");
+    return this._content;
+    }
+    };
+
+    function withBoxUnlocked(pred){
+        box.unlock();
+        try {
+            box.pred;
+        } catch(error) {
+            console.log("Not a valid function" , pred);
+        }
+        finally{
+            box.lock();
+        }
+    }
+
+    withBoxUnlocked(box.lock());
+    console.log(box.locked);
+
+    const x = 1;
+    function evalAndReturnX(code) {
+    eval(code);
+    return x;
+    }
+
+    console.log(evalAndReturnX("var x = 4"));
+    
+    const {parse} = require("ini");
+    console.log(parse("x = 10\ny = 20"));
