@@ -11,6 +11,9 @@
     "type": "git",
     "url": "git+https://github.com/ckharide/100daysofcode.git"
   },
+  "dependencies": {
+    "dijkstrajs": "^1.0.1"
+  },
   "author": "chandra mouli",
   "license": "ISC",
   "bugs": {
