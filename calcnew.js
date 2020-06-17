@@ -13,6 +13,7 @@ document.querySelector('.calculator-keys').addEventListener('click', (event) => 
     console.log('operator', target.value);
     updateRunningDisplay(target.value);
     let result = updateOperatorStack(target.value);
+    console.log(result);
     opseen = true;
     updateRunningDisplay(result);
     return;
@@ -47,18 +48,19 @@ function updateCurrentDisplay(value){
 }
 
 function updateRunningDisplay(value){
+    console.log("Display value" , value);
     document.querySelector('.calculator-screen').value = value;
 }
 
 function updateOperatorStack(op){
     var number = [];
-    console.log("Inside Operator " , op);
-    if(op === '==') {
-        evaluate(operatorSt, numberSt);
+    op = op.trim();
+    if(op == '=') {
+        return evaluate(operatorSt, numberSt);
     }
-    if(op !== '==')
+    else if(op !== '=')
     {
-        console.log("Value of op" ,op);
+        console.log("Pushing value" , op);
         operatorSt.push(op);
         while(!numberSt.isEmpty()) {
             number.unshift(numberSt.pop());
@@ -82,6 +84,7 @@ function reset(){
 }
 
 function evaluate(opstack , numstack) {
+    console.log("Operator value");
     var op1 =0, op2 = 0;
     let result = 0
     while(!numstack.isEmpty() )
@@ -89,7 +92,10 @@ function evaluate(opstack , numstack) {
         op1 = numberSt.pop();
         op2 = numberSt.pop();
     }
-    if(!opstack.isEmpty) {
+    op1 = parseFloat(op1);
+    op2 = parseFloat(op2);
+    console.log(op2);
+    if(!opstack.isEmpty()) {
         op = opstack.pop();
         switch(op) {
             case '+' : result = op1 + op2;
@@ -102,6 +108,5 @@ function evaluate(opstack , numstack) {
             break;
         }
     }
-    console.log(result);
     return result;
 }
